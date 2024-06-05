@@ -5,6 +5,15 @@
     <title>Title</title>
 </head>
 <body>
+<h1>Director's Info</h1><br>
+<h1>Director name: </h1>
+<span th:text="${director.name}"></span><br>
+<h1>Director's birthday: </h1>
+<span th:text="${patient.date}"></span><br>
+<h1>Director's movies: </h1>
+<tr th:each="mvs : ${movies}">
+    <td th:utext="${mvs.name}"></td>
+</tr>
 
 </body>
 </html>

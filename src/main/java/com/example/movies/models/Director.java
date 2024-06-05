@@ -1,8 +1,9 @@
 package com.example.movies.models;
 
 import jakarta.persistence.*;
-
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "director")
@@ -12,10 +13,16 @@ public class Director {
     private Long id;
 
     @Column(name = "name")
-    String name;
+    private String name;
 
     @Column(name = "birthday")
-    LocalDate date;
+    private LocalDate date;
+
+    @OneToMany(mappedBy = "director", cascade = CascadeType.ALL)
+    private List<Movies> movies;
+
+    public Director() {
+    }
 
     public String getName() {
         return name;

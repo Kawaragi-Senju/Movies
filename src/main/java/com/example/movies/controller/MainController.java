@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.sql.ResultSet;
 import java.time.LocalDate;
 
 @Controller
@@ -24,8 +25,8 @@ public class MainController {
     @GetMapping("/cm")
     public String createMovie(){
         Movies movies = new Movies();
-        movies.setFilmname("Однажды в Голливуде");
-        movies.setDirector_id(1L);
+        movies.setFilmname("Звездные войны 5: Империя наносит ответный удар");
+        movies.setDirector_id(2L);
         moviesRepository.save(movies);
     return "post";
     }
@@ -33,14 +34,16 @@ public class MainController {
     @GetMapping("/cd")
     public String createDirector(){
         Director director = new Director();
-        director.setName("Тарантино");
-        director.setDate(LocalDate.parse("1964-03-27"));
+        director.setName("Джордж Лукас");
+        director.setDate(LocalDate.parse("1944-05-14"));
         directorRepository.save(director);
     return "post";
     }
 
-    @GetMapping("/gbi")
+    @GetMapping("/gbi/{id}")
     public String getById(@PathVariable(name = "id") Long id, Model model){
-    return "result";
+        model.addAttribute("director", directorRepository.getDirectorById(id));
+        model.addAttribute("movies", moviesRepository.getMoviesByDirector_id(id));
+    return "results";
     }
 }

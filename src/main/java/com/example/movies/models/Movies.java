@@ -13,7 +13,11 @@ public class Movies {
     String filmname;
 
     @Column(name = "director_id")
-    Long director_id;
+    Long directorId;
+
+    @ManyToOne()
+    @JoinColumn(name ="director_id",  updatable = false, insertable = false)
+    Director director;
 
     public String getFilmname() {
         return filmname;
@@ -24,11 +28,11 @@ public class Movies {
     }
 
     public Long getDirector_id() {
-        return director_id;
+        return directorId;
     }
 
     public void setDirector_id(Long director_id) {
-        this.director_id = director_id;
+        this.directorId = director_id;
     }
 
     public void setId(Long id) {
