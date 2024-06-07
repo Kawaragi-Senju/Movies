@@ -9,10 +9,10 @@
 <h1>Director name: </h1>
 <span th:text="${director.name}"></span><br>
 <h1>Director's birthday: </h1>
-<span th:text="${patient.date}"></span><br>
+<span th:text="${director.date}"></span><br>
 <h1>Director's movies: </h1>
 <tr th:each="mvs : ${movies}">
-    <td th:utext="${mvs.name}"></td>
+    <td> <br th:utext="${mvs.filmname}"></td>
 </tr>
 
 </body>

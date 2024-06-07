@@ -25,8 +25,8 @@ public class MainController {
     @GetMapping("/cm")
     public String createMovie(){
         Movies movies = new Movies();
-        movies.setFilmname("Звездные войны 5: Империя наносит ответный удар");
-        movies.setDirector_id(2L);
+        movies.setFilmname("Бесславные ублюдки");
+        movies.setDirector_id(1L);
         moviesRepository.save(movies);
     return "post";
     }
@@ -34,7 +34,7 @@ public class MainController {
     @GetMapping("/cd")
     public String createDirector(){
         Director director = new Director();
-        director.setName("Джордж Лукас");
+        director.setName("Квентин Тарантино");
         director.setDate(LocalDate.parse("1944-05-14"));
         directorRepository.save(director);
     return "post";
