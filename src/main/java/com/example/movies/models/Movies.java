@@ -2,6 +2,8 @@ package com.example.movies.models;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "movies")
 public class Movies {
@@ -15,6 +17,9 @@ public class Movies {
     @ManyToOne()
     @JoinColumn(name ="director_id")
     Director director;
+
+    @ManyToMany(mappedBy = "moviesList")
+    List<Actor> actorList;
 
     public String getFilmname() {
         return filmname;
@@ -30,5 +35,21 @@ public class Movies {
 
     public Long getId() {
         return id;
+    }
+
+    public Director getDirector() {
+        return director;
+    }
+
+    public void setDirector(Director director) {
+        this.director = director;
+    }
+
+    public List<Actor> getActorList() {
+        return actorList;
+    }
+
+    public void setActorList(List<Actor> actorList) {
+        this.actorList = actorList;
     }
 }

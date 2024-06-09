@@ -46,4 +46,9 @@ public class MainController {
         System.out.println("sdffdfsf");
     return director;
     }
+
+    @GetMapping("am")
+    public @ResponseBody Movies getMovies(){
+        return moviesRepository.getReferenceById(1);
+    }
 }
