@@ -18,12 +18,19 @@ public class Director {
     @Column(name = "birthday")
     private LocalDate date;
 
-    @OneToMany(mappedBy = "director", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "director", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Movies> movies;
+
+    public List<Movies> getMovies() {
+        return movies;
+    }
+
+    public void setMovies(List<Movies> movies) {
+        this.movies = movies;
+    }
 
     public Director() {
     }
-
     public String getName() {
         return name;
     }

@@ -10,7 +10,4 @@ import java.util.Set;
 
 @Repository
 public interface MoviesRepository extends JpaRepository<Movies, Integer> {
-    @Query(value = "select * from movies where director_id = ?", nativeQuery = true)
-    public List<Movies> getMoviesByDirector_id(Long id);
-
 }

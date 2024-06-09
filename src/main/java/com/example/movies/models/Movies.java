@@ -12,11 +12,8 @@ public class Movies {
     @Column(name = "filmname")
     String filmname;
 
-    @Column(name = "director_id")
-    Long directorId;
-
     @ManyToOne()
-    @JoinColumn(name ="director_id",  updatable = false, insertable = false)
+    @JoinColumn(name ="director_id")
     Director director;
 
     public String getFilmname() {
@@ -25,14 +22,6 @@ public class Movies {
 
     public void setFilmname(String filmname) {
         this.filmname = filmname;
-    }
-
-    public Long getDirector_id() {
-        return directorId;
-    }
-
-    public void setDirector_id(Long director_id) {
-        this.directorId = director_id;
     }
 
     public void setId(Long id) {

@@ -9,9 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-
-import java.sql.ResultSet;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import java.time.LocalDate;
+
 
 @Controller
 public class MainController {
@@ -26,7 +27,6 @@ public class MainController {
     public String createMovie(){
         Movies movies = new Movies();
         movies.setFilmname("Бесславные ублюдки");
-        movies.setDirector_id(1L);
         moviesRepository.save(movies);
     return "post";
     }
@@ -41,9 +41,9 @@ public class MainController {
     }
 
     @GetMapping("/gbi/{id}")
-    public String getById(@PathVariable(name = "id") Long id, Model model){
-        model.addAttribute("director", directorRepository.getDirectorById(id));
-        model.addAttribute("movies", moviesRepository.getMoviesByDirector_id(id));
-    return "results";
+    public @ResponseBody Director getById(@PathVariable(name = "id") Long id){
+        Director director = directorRepository.getDirectorById(id);
+        System.out.println("sdffdfsf");
+    return director;
     }
 }
