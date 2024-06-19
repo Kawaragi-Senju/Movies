@@ -1,5 +1,6 @@
 package com.example.movies.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
@@ -19,7 +20,7 @@ public class Director {
     private LocalDate date;
 
     @OneToMany(mappedBy = "director", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Movies> movies;
+    private  List<Movies> movies;
 
     public List<Movies> getMovies() {
         return movies;

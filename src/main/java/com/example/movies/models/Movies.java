@@ -1,10 +1,16 @@
 package com.example.movies.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 
 import java.util.List;
 
 @Entity
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 @Table(name = "movies")
 public class Movies {
     @Id
@@ -16,7 +22,7 @@ public class Movies {
 
     @ManyToOne()
     @JoinColumn(name ="director_id")
-    Director director;
+    private Director director;
 
     @ManyToMany(mappedBy = "moviesList")
     List<Actor> actorList;
@@ -36,7 +42,6 @@ public class Movies {
     public Long getId() {
         return id;
     }
-
     public Director getDirector() {
         return director;
     }
