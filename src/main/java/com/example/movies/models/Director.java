@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -54,5 +55,14 @@ public class Director {
 
     public Long getId() {
         return id;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(!(obj instanceof Director)){
+            return false;
+        }
+        Director director = (Director) obj;
+        return Objects.equals(director.getName(), name) && Objects.equals(director.getDate(), date);
     }
 }

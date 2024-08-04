@@ -12,6 +12,12 @@ public class ServiceTransaction {
 
     @Autowired
     DirectorRepository directorRepository;
+//    @Autowired
+//    public ServiceTransaction(DirectorRepository directorRepository){
+//        this.directorRepository = directorRepository;
+//    }
+
+
 
     @Transactional(isolation = Isolation.READ_UNCOMMITTED, rollbackFor = RuntimeException.class)
     public String service() {
@@ -19,5 +25,10 @@ public class ServiceTransaction {
         director.setName("sfdskf");
         directorRepository.save(director);
         throw new RuntimeException("HA-Ha");
+    }
+
+    public Director getById(Long id){
+        Director director = new Director();
+        return directorRepository.getDirectorById(id);
     }
 }
