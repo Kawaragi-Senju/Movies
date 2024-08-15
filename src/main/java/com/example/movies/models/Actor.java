@@ -7,7 +7,7 @@ import com.fasterxml.jackson.databind.annotation.JsonAppend;
 import jakarta.persistence.*;
 import java.util.List;
 
-@Entity
+//@Entity
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
